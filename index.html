@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For Neha ❤️</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -13,62 +13,52 @@
       margin: 0;
       height: 100vh;
       font-family: 'Poppins', sans-serif;
-      background: url('https://static.vecteezy.com/system/resources/thumbnails/005/489/500/small/happy-valentines-day-with-paper-hearts-and-copy-space-on-red-background-vector.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
-      position: relative;
-    }
-
-    /* Dark overlay so text pops */
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 0;
     }
 
     .glass-card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(15px);
       border-radius: 30px;
       padding: 40px;
       max-width: 460px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      z-index: 5;
     }
 
     h1 {
-      color: #fff1f5;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      color: #d6336c;
     }
 
     .sub-text {
-      color: #f8e9f0;
+      color: #555;
       margin-bottom: 20px;
       min-height: 40px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      transition: 0.3s;
     }
 
     img {
       width: 100%;
       border-radius: 18px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .btn-container {
       display: flex;
       justify-content: center;
-      gap: 18px;
-      margin-top: 22px;
+      gap: 20px;
+      margin-top: 25px;
       min-height: 80px;
     }
 
     button {
-      padding: 12px 32px;
+      padding: 12px 34px;
       font-size: 1.1rem;
       border-radius: 50px;
       border: none;
@@ -77,39 +67,35 @@
     }
 
     #yesBtn {
-      background: linear-gradient(45deg, #ff9ab8, #ff426e);
+      background: linear-gradient(45deg, #ff6b81, #ff4757);
       color: white;
       cursor: pointer;
       animation: pulse 1.8s infinite;
-      box-shadow: 0 8px 20px rgba(255,66,110,0.5);
-    }
-
-    #yesBtn:hover {
-      transform: scale(1.08);
     }
 
     #noBtn {
-      background: #fff;
-      color: #ff4e78;
-      border: 2px solid #ff4e78;
+      background: white;
+      color: #ff6b81;
+      border: 2px solid #ff6b81;
       position: fixed;
-      pointer-events: none;
-      font-weight: 600;
+      cursor: default;
+      pointer-events: none; /* never clickable */
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .big-love {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      color: #e03131;
     }
 
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.07); }
       100% { transform: scale(1); }
-    }
-
-    .hidden { display: none; }
-
-    .big-love {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.8rem;
-      color: #ffd3da;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
   </style>
 </head>
@@ -118,7 +104,7 @@
 
 <div class="glass-card">
   <div id="questionScreen">
-    <img src="https://media.tenor.com/0AVbKGY_MxMAAAAi/bear-love.gif" alt="Cute Bear">
+    <img src="https://media.tenor.com/0AVbKGY_MxMAAAAi/bear-love.gif" />
 
     <h1>Neha 💕</h1>
     <p class="sub-text" id="teaseText">
@@ -132,12 +118,13 @@
   </div>
 
   <div id="successScreen" class="hidden">
-    <img src="https://media.tenor.com/7JkF5YfX1y8AAAAi/love-happy.gif" alt="Happy Dance">
+    <img src="https://media.tenor.com/7JkF5YfX1y8AAAAi/love-happy.gif" />
     <h1 class="big-love">YAAAY 💖</h1>
-    <p class="sub-text">
-      I knew it, Nishu 🥰<br>
-      You light up my world brighter than the sun 💫<br>
-      Today, tomorrow, forever — you’re my ❤️
+    <p>
+      I knew it, Nishu 🥰<br><br>
+      You are my favorite person,<br>
+      my safest place,<br>
+      and my forever ❤️
     </p>
   </div>
 </div>
@@ -151,8 +138,8 @@
     "Are you sure? 😏",
     "Think again, Nishu 🥺",
     "Your heart says yes ❤️",
-    "Still thinking? 🙈",
-    "Come on now 😌",
+    "Still no? 🙈",
+    "Don’t be shy 😌",
     "Okay now you’re teasing 😘"
   ];
 
@@ -160,24 +147,26 @@
 
   document.addEventListener("mousemove", (e) => {
     const rect = noBtn.getBoundingClientRect();
-    const dist = Math.hypot(
+    const distance = Math.hypot(
       e.clientX - (rect.left + rect.width / 2),
       e.clientY - (rect.top + rect.height / 2)
     );
 
-    if (dist < 130) {
-      runAway();
+    if (distance < 120) {
+      moveNoButton();
     }
   });
 
-  function runAway() {
+  function moveNoButton() {
+    // Change button text in loop
     noBtn.innerText = noTexts[hoverIndex % noTexts.length];
     teaseText.innerText = noTexts[hoverIndex % noTexts.length];
     hoverIndex++;
 
-    const pad = 110;
-    const x = Math.random() * (window.innerWidth - pad);
-    const y = Math.random() * (window.innerHeight - pad);
+    // Keep button inside screen
+    const padding = 120;
+    const x = Math.random() * (window.innerWidth - padding);
+    const y = Math.random() * (window.innerHeight - padding);
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
@@ -188,7 +177,7 @@
     document.getElementById("successScreen").classList.remove("hidden");
 
     confetti({
-      particleCount: 300,
+      particleCount: 250,
       spread: 360,
       origin: { y: 0.6 }
     });
