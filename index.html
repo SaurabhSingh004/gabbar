@@ -47,6 +47,7 @@
 
     h1 {
       color: #d6336c;
+      margin-bottom: 10px;
     }
 
     .sub-text {
@@ -65,12 +66,12 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-top: 20px;
+      margin-top: 25px;
       min-height: 70px;
     }
 
     button {
-      padding: 12px 32px;
+      padding: 12px 34px;
       font-size: 1.1rem;
       border-radius: 50px;
       border: none;
@@ -86,11 +87,16 @@
       box-shadow: 0 8px 20px rgba(255,71,87,0.5);
     }
 
+    #yesBtn:hover {
+      transform: scale(1.08);
+    }
+
     #noBtn {
       background: white;
       color: #ff6b81;
       border: 2px solid #ff6b81;
       position: fixed;
+      pointer-events: none; /* NEVER clickable */
     }
 
     .hidden {
@@ -114,20 +120,19 @@
 <body>
 
 <script>
-  // Floating hearts
+  /* Floating hearts */
   for (let i = 0; i < 25; i++) {
-    const h = document.createElement('div');
-    h.className = 'heart';
-    h.innerHTML = '❤️';
-    h.style.left = Math.random() * 100 + 'vw';
-    h.style.animationDelay = Math.random() * 6 + 's';
-    document.body.appendChild(h);
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 6 + 's';
+    document.body.appendChild(heart);
   }
 </script>
 
 <div class="glass-card">
   <div id="questionScreen">
-    <!-- Reliable Tenor GIF -->
     <img src="https://media.tenor.com/0AVbKGY_MxMAAAAi/bear-love.gif" alt="Cute Bear">
 
     <h1>Neha 💕</h1>
@@ -136,18 +141,20 @@
     </p>
 
     <div class="btn-container">
-      <button id="yesBtn" onclick="acceptLove()">YES ❤️</button>
-      <button id="noBtn" onmouseover="runAway()">NO 🙈</button>
+      <button id="yesBtn" onclick="acceptLove()">Come Here ❤️</button>
+      <button id="noBtn">Still Thinking 🙈</button>
     </div>
   </div>
 
   <div id="successScreen" class="hidden">
-    <img src="https://media.tenor.com/7JkF5YfX1y8AAAAi/love-happy.gif">
+    <img src="https://media.tenor.com/7JkF5YfX1y8AAAAi/love-happy.gif" alt="Celebration">
     <h1 class="big-love">YAAAY 💖</h1>
     <p>
       I knew it, Nishu 🥰<br><br>
-      You make my world brighter, my heart warmer,<br>
-      and my life happier — every single day ❤️
+      You make my world brighter,<br>
+      my heart softer,<br>
+      and my life happier ❤️<br><br>
+      Today, tomorrow, always — it’s you 💕
     </p>
   </div>
 </div>
@@ -157,19 +164,29 @@
   const teaseText = document.getElementById("teaseText");
 
   const messages = [
-    "Are you sure, Nishu? 🥺",
-    "Think again, Neha 😏",
-    "What if I bring chocolates? 🍫",
-    "No is not an option today 😌",
-    "Say yes already ❤️"
+    "Still thinking, Nishu? 😏",
+    "Are you sure, Neha? 🥺",
+    "Your heart already said yes ❤️",
+    "What if I give you a hug? 🤗",
+    "Okay this is getting cute now 😌"
   ];
 
+  document.addEventListener("mousemove", (e) => {
+    const rect = noBtn.getBoundingClientRect();
+    const distance = Math.hypot(
+      e.clientX - (rect.left + rect.width / 2),
+      e.clientY - (rect.top + rect.height / 2)
+    );
+
+    if (distance < 120) {
+      runAway();
+    }
+  });
+
   function runAway() {
-    // Random message
     teaseText.innerText = messages[Math.floor(Math.random() * messages.length)];
 
-    // Keep button inside screen
-    const padding = 80;
+    const padding = 100;
     const x = Math.random() * (window.innerWidth - padding);
     const y = Math.random() * (window.innerHeight - padding);
 
